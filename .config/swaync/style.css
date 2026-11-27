@@ -1,0 +1,371 @@
+/* ~/.config/swaync/style.css  —  Gruvbox Material (dark hard) */
+@import 'colors/gruvbox-material.css';
+
+/* ---- Semantic colors (change @accent to restyle everything) ---- */
+@define-color accent      @aqua;      /* try: @green, @blue, @orange, @yellow, @purple */
+@define-color urgent      @red;
+@define-color text        @fg;
+@define-color text_dim    @fg_dim;
+@define-color panel       @bg0;
+@define-color card        @bg1;
+@define-color card_hover  @bg2;
+@define-color btn         @bg2;
+@define-color btn_hover   @bg3;
+@define-color line        @bg3;
+
+/* ---- Base ---- */
+* {
+  all: unset;
+  color: @text;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+}
+
+.blank-window {
+  background: transparent;
+}
+
+/* ==================== NOTIFICATION CARDS (popup + control center) ==================== */
+
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-row .notification-background {
+  background: alpha(@card, .97);
+  border: 1px solid @line;
+  border-radius: 14px;
+  margin: 6px 12px;
+  padding: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+  transition: background 150ms ease;
+}
+
+.control-center .notification-row .notification-background:hover {
+  background: @card_hover;
+}
+
+.notification-row .notification-background .notification {
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.notification-row .notification-background .notification.critical {
+  border: 1px solid @urgent;
+}
+
+.notification-row .notification-background .notification .notification-content {
+  margin: 10px 12px;
+}
+
+.image {
+  margin: 4px 14px 4px 0;
+}
+
+.summary {
+  font-size: 15px;
+  font-weight: 700;
+  color: @text;
+}
+
+.time {
+  font-size: 12px;
+  color: @text_dim;
+  margin-right: 8px;
+}
+
+.body {
+  font-size: 13px;
+  color: @text_dim;
+}
+
+/* close (x) button */
+.notification-row .notification-background .close-button {
+  margin: 6px;
+  padding: 2px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.notification-row .notification-background .close-button:hover {
+  background: alpha(@urgent, .25);
+  border-color: @urgent;
+}
+
+/* action buttons inside a notification */
+.notification-row .notification-background .notification .notification-action {
+  background: @btn;
+  border: 1px solid @line;
+  border-radius: 8px;
+  margin: 4px;
+  padding: 6px 12px;
+  min-height: 28px;
+}
+
+.notification-row .notification-background .notification .notification-action:hover {
+  background: @btn_hover;
+  border-color: @accent;
+}
+
+.notification-row .notification-background .notification .notification-action:active {
+  background: @accent;
+  color: @bg0;
+}
+
+/* timeout progress bar */
+.notification progress,
+.notification.low progress,
+.notification.normal progress {
+  background: @accent;
+}
+
+.notification.critical progress {
+  background: @urgent;
+}
+
+/* ==================== CONTROL CENTER PANEL ==================== */
+
+.control-center {
+  background: alpha(@panel, .97);
+  border: 1px solid @line;
+  border-radius: 18px;
+  margin: 12px;
+  padding: 0;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .45);
+}
+
+.control-center .control-center-list-placeholder {
+  opacity: .5;
+}
+
+/* ---- Title + "Clear All" ---- */
+.widget-title {
+  margin: 0;
+  padding: 14px 18px 6px 18px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.widget-title > button {
+  background: @btn;
+  border: 1px solid @line;
+  border-radius: 10px;
+  padding: 4px 12px;
+  font-size: 13px;
+  transition: background 150ms ease;
+}
+
+.widget-title > button:hover {
+  background: @btn_hover;
+  border-color: @accent;
+}
+
+.widget-title > button:active {
+  background: @accent;
+  color: @bg0;
+}
+
+/* ==================== QUICK TOGGLES (icons only) ==================== */
+
+.widget-buttons-grid {
+  background: transparent;
+  margin: 0;
+  padding: 12px 12px 4px 12px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: @btn;
+  border: 1px solid @line;
+  border-radius: 12px;
+  margin: 4px;
+  min-height: 56px;
+  min-width: 78px;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button label {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 22px;
+  color: @text_dim;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @btn_hover;
+  border-color: @accent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:active {
+  background: alpha(@accent, .30);
+}
+
+/* toggle ON */
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: alpha(@accent, .20);
+  border-color: @accent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
+  color: @accent;
+}
+
+/* ==================== VOLUME & BRIGHTNESS ==================== */
+
+.widget-volume,
+.widget-backlight {
+  background: transparent;
+  margin: 0;
+  padding: 8px 18px;
+}
+
+.widget-volume label,
+.widget-backlight label {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 22px;
+  color: @text_dim;
+  margin-right: 12px;
+}
+
+.widget-volume trough,
+.widget-backlight trough {
+  background: @bg3;
+  border-radius: 10px;
+  min-height: 8px;
+}
+
+.widget-volume highlight,
+.widget-backlight highlight {
+  background: @accent;
+  border-radius: 10px;
+}
+
+.widget-volume slider,
+.widget-backlight slider {
+  background: @fg;
+  border: 2px solid @accent;
+  border-radius: 50%;
+  min-width: 14px;
+  min-height: 14px;
+  margin: -6px 0;
+}
+
+.widget-volume slider:hover,
+.widget-backlight slider:hover {
+  background: @accent;
+}
+
+/* ==================== DO NOT DISTURB ==================== */
+
+.widget-dnd {
+  background: transparent;
+  margin: 0;
+  padding: 8px 18px 12px 18px;
+  font-size: 14px;
+}
+
+.widget-dnd > switch {
+  background: @btn;
+  border: 1px solid @line;
+  border-radius: 14px;
+  min-width: 44px;
+  min-height: 24px;
+  transition: background 150ms ease;
+}
+
+.widget-dnd > switch:hover {
+  border-color: @accent;
+}
+
+.widget-dnd > switch:checked {
+  background: @accent;
+  border-color: @accent;
+}
+
+.widget-dnd > switch slider {
+  background: @fg;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 1px;
+}
+
+.widget-dnd > switch:checked slider {
+  background: @bg0;
+}
+
+/* ==================== MEDIA PLAYER ==================== */
+
+.widget-mpris {
+  background: transparent;
+  margin: 0;
+  padding: 8px 12px;
+}
+
+/* card stays almost transparent so the faded album-art backdrop shows through */
+.widget-mpris-player {
+  background: alpha(@fg, .04);
+  border: 1px solid @line;
+  border-radius: 14px;
+  padding: 12px;
+  margin: 0;
+}
+
+/* faded + blurred album art behind the player (from your repo's original CSS) */
+.widget-mpris .widget-mpris-player .mpris-background {
+  filter: blur(30px) brightness(0.6);
+  opacity: 0.6;
+  border-radius: 14px;
+}
+
+.widget-mpris-album-art {
+  -gtk-icon-size: 96px;
+  min-width: 96px;
+  min-height: 96px;
+  border-radius: 19px;
+  border: 1px solid @line;
+  margin: 0 12px 0 0;
+  overflow: hidden;
+}
+
+.widget-mpris-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: @text;
+}
+
+.widget-mpris-subtitle {
+  font-size: 13px;
+  color: @text_dim;
+}
+
+/* semi-opaque dark buttons so they stay readable over the backdrop */
+.widget-mpris button {
+  background: alpha(@bg0, .55);
+  border: 1px solid @line;
+  border-radius: 50%;
+  margin: 8px 4px 0 4px;
+  min-width: 40px;
+  min-height: 40px;
+  transition: background 150ms ease;
+}
+
+.widget-mpris button:hover {
+  background: alpha(@bg0, .8);
+  border-color: @accent;
+}
+
+.widget-mpris button:active {
+  background: alpha(@accent, .30);
+}
+
+/* play/pause: translucent accent */
+.widget-mpris button:nth-child(3) {
+  background: alpha(@accent, .20);
+  border-color: @accent;
+}
+
+.widget-mpris button:nth-child(3):hover {
+  background: alpha(@accent, .35);
+}

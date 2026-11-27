@@ -1,0 +1,128 @@
+@import "colors/gruvbox-material.css";
+
+/* 1. Global Reset */
+* {
+    all: unset;
+    font-family: "JetBrainsMono Nerd Font Propo", monospace;
+}
+
+/* 2. Floating Capsule Bar */
+window#waybar {
+    background-color: transparent;
+    border: none;
+}
+
+/* 3. Corner spacing */
+.modules-left {
+    margin-left: 6px;
+}
+
+.modules-right {
+    margin-right: 6px;
+}
+
+/* 4. Inner pills (the four groups + workspaces) */
+#clockdate,
+#media,
+#net,
+#stats,
+#workspaces {
+    background-color: @bg1;
+    border-radius: 99px;
+    margin: 4px 4px;
+    padding: 0px 10px;
+}
+
+/* 5. Workspaces (center) */
+#workspaces {
+    font-size: 0.4rem;
+}
+
+#workspaces button {
+    background-color: @bg4;
+    color: transparent;
+    padding: 0px;
+    margin: 10px 3px;
+    border-radius: 99px;
+    min-width: 10px;
+    min-height: 10px;
+    transition: none;
+}
+
+#workspaces button.active {
+    background-color: @blue;
+    min-width: 20px;
+    border-radius: 99px;
+}
+
+/* 6. Clock + Date (left corner pill) */
+#clockdate {
+    padding: 0px 18px;
+}
+
+#clock {
+    margin: 0px 14px 0px 0px;
+    font-weight: 700;
+    font-size: 1.12rem;
+    color: @fg;
+}
+
+#clock.date {
+    margin: 0px;
+    font-size: 0.85rem;
+    color: @gray2;
+}
+
+/* 7. Audio, Brightness & Cava (left-middle pill) */
+#pulseaudio {
+    color: @fg;
+    padding: 0px 8px;
+    font-size: 0.9rem;
+}
+
+#pulseaudio.muted {
+    color: @red;
+}
+
+#backlight {
+    color: @purple;
+    padding: 0px 8px;
+    font-size: 0.9rem;
+}
+
+#cava {
+    color: @aqua;
+    margin: 0 4px 0 8px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+/* 8. Network (right-middle pill) */
+#network {
+    color: @green;
+    padding: 0px 4px;
+    font-size: 0.85rem;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+/* 9. CPU, Memory & Battery (right corner pill) */
+#cpu {
+    color: @yellow;
+    padding: 0px 8px;
+    font-size: 0.85rem;
+}
+
+#memory {
+    color: @orange;
+    padding: 0px 8px;
+    font-size: 0.85rem;
+}
+
+#battery {
+    color: @fg;
+    padding: 0px 8px;
+    font-size: 0.85rem;
+}

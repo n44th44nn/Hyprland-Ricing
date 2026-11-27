@@ -1,0 +1,12 @@
+antigravity
+antigravity-ide
+google-chrome
+onlyoffice-bin
+python-eduvpn-client
+spicetify-cli
+sptlrx-bin
+ttf-ms-fonts
+vesktop-bin
+visual-studio-code-bin
+waybar-cava
+yay

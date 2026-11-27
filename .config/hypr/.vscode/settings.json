@@ -1,0 +1,10 @@
+{
+  "Lua.runtime.version": "LuaJIT",
+  "Lua.diagnostics.globals": [
+    "hl"
+  ],
+  "Lua.workspace.checkThirdParty": false,
+  "Lua.workspace.library": [
+    "/usr/share/hyprland/lua"
+  ]
+}
